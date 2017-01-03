@@ -1,21 +1,37 @@
 <?php
+include("../header.php");
 
-print('<form method="POST">');
-print('<textarea name="in"></textarea>');
-print('<input type="submit" name="submit" value="submit" />');
-print('</form>');
+$in = $_POST['in'];
 
-print('<h2>urldecode</h2>');
-print('<textarea>'.urldecode($_POST['in']).'</textarea>');
+?>
+<div class="form-main">
+    <h1>String Encode Decode</h1>
+    <form method="POST">
+        <textarea name="in"><?= $in ?></textarea>
+        <input type="submit" name="submit" value="submit" />
+    </form>
+<?php
 
-print('<h2>urlencode</h2>');
-print('<textarea>'.urlencode($_POST['in']).'</textarea>');
+$functionsList = array(
+    'urldecode',
+    'urlencode',
+    'utf8decode',
+    'utf8encode',
+    'base64_decode',
+    'base64_encode',
+    'rawurldecode',
+    'rawurlencode',
+    'json_decode',
+    'json_encode'
+);
 
-print('<h2>utf8encode</h2>');
-print('<textarea>'.utf8_encode($_POST['in']).'</textarea>');
-
-print('<h2>utf8decode</h2>');
-print('<textarea>'.utf8_decode($_POST['in']).'</textarea>');
-
-
-
+foreach ($functionsList as $function) {
+    if (function_exists($function)) {
+        print("<h2>".ucfirst($function)."</h2>\n");
+        print("<textarea>".call_user_func($function, $in)."</textarea>");
+    }
+}
+?>
+</div>
+<?php
+include("../footer.php");

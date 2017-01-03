@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+ul.list-home {
+    list-style-type: none;
+}
+
+.form-main textarea {
+    width: 95%;
+    margin: 0 1em;
+}
