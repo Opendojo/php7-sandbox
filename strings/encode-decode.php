@@ -13,6 +13,8 @@ $in = $_POST['in'];
 <?php
 
 $functionsList = array(
+    'addslashes',
+    'stripslashes',
     'urldecode',
     'urlencode',
     'utf8decode',
